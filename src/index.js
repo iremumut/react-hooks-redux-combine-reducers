@@ -3,10 +3,17 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import reducer from "./features/books/booksSlice";
+import {booksReducer} from "./features/books/booksSlice";
+import {authorsReducer} from "./features/authors/authorsSlice";
+import { combineReducers } from "redux";
+
+const reducers = combineReducers({
+  authors: authorsReducer,
+  books: booksReducer
+});
 
 const store = createStore(
-  reducer,
+  reducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
